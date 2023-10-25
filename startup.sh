@@ -1,0 +1,1 @@
+docker compose -f .\docker-compose-base.yml down && docker compose -f .\docker-compose-base.yml up --build --no-start && docker compose -f .\docker-compose-base.yml up -d
