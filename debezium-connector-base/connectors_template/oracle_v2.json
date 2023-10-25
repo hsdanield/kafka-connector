@@ -9,6 +9,7 @@
       "database.user" : "C##USERCDC",
       "database.password" : "C##USERCDC",
       "database.dbname" : "ORCLCDB",
+      "table.include.list": "C##USERSOURCE.TAB_TESTE_1",
       "schema.history.internal.kafka.bootstrap.servers" : "kafka:9092",
       "schema.history.internal.kafka.topic": "schema-changes.orclcdb"
     }

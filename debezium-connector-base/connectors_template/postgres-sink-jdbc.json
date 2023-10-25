@@ -1,0 +1,19 @@
+{
+    "name": "jdbc-sink-TAB_TESTE_1-postgress",
+    "config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+        "tasks.max": "1",
+        "dialect.name": "PostgreSqlDatabaseDialect",
+        "table.name.format": "TAB_TESTE_1",
+        "topics": "oracle-db-source.INVENTORY.TAB_TESTE_1",
+        "connection.url": "jdbc:postgresql://192.168.0.226:5432/postgres?user=postgres&password=postgres",
+        "transforms": "unwrap",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+        "transforms.unwrap.drop.tombstones": "false",
+        "auto.create": "true",
+        "insert.mode": "upsert",
+        "delete.enabled": "true",
+        "pk.fields": "ID",
+        "pk.mode": "record_key"
+    }
+}
