@@ -1,0 +1,24 @@
+{
+    "name": "<input>",
+    "config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+        "key.converter": "io.confluent.connect.avro.AvroConverter",
+        "value.converter": "io.confluent.connect.avro.AvroConverter",
+        "value.converter.schema.registry.url": "http://192.168.0.110:8081",
+        "key.converter.schema.registry.url": "http://192.168.0.110:8081",
+        "tasks.max": "1",
+        "topics": "<input>",
+        "batch.size": "1",
+        "connection.url": "<jdbc_url>",
+        "connection.user": "<input>",
+        "connection.password": "<input>",
+        "insert.mode": "upsert",
+        "table.name.format": "<input>",
+        "pk.mode": "record_key",
+        "pk.fields": "<input>",
+        "auto.create": "true",
+        "auto.evolve": "true",
+        "delete.enabled": "true",
+        "dialect.name": "PostgreSqlDatabaseDialect"
+    }
+}

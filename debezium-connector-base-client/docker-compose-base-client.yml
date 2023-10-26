@@ -1,0 +1,25 @@
+version: '2'
+name: kafka-connect-debezium-client
+services:
+
+  
+  connect-client:
+    container_name: connect-client
+    image: debezium/connect-with-oracle-jdbc:${DEBEZIUM_VERSION}
+    build:
+      context: debezium-with-oracle-jdbc
+      args:
+        DEBEZIUM_VERSION: ${DEBEZIUM_VERSION}
+    ports:
+     - 8084:8083
+     - 5006:5006
+    environment:
+     - BOOTSTRAP_SERVERS=http://192.168.0.226:9092
+     - GROUP_ID=2
+     - CONFIG_STORAGE_TOPIC=my_connect_configs2
+     - OFFSET_STORAGE_TOPIC=my_connect_offsets2
+     - STATUS_STORAGE_TOPIC=my_connect_statuses2
+     - LD_LIBRARY_PATH=/instant_client
+     - KAFKA_DEBUG=true
+     - DEBUG_SUSPEND_FLAG=n
+     - JAVA_DEBUG_PORT=0.0.0.0:5006

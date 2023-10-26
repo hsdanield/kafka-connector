@@ -14,12 +14,17 @@ services:
     container_name: kafka 
     image: quay.io/debezium/kafka:${DEBEZIUM_VERSION}
     ports:
-     - 9092:9092
+      - "9092:9092"
     links:
      - zookeeper
     environment:
      - ZOOKEEPER_CONNECT=zookeeper:2181
-  
+    #  - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+    #  - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:9092
+    #  - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+    #  - KAFKA_LISTENERS=PLAINTEXT://kafka:29092,PLAINTEXT_HOST://${HOST_INSTALL_BROKER}:9092
+     - ADVERTISED_HOST_NAME=192.168.0.226
+
   schema-registry:
     container_name: schema-registry 
     image: confluentinc/cp-schema-registry:7.4.0
@@ -29,8 +34,6 @@ services:
      - SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS=kafka:9092
      - SCHEMA_REGISTRY_HOST_NAME=schema-registry
      - SCHEMA_REGISTRY_LISTENERS=http://schema-registry:8081
-    #  - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181
-      # SCHEMA_REGISTRY_LISTENERS: http://schema-registry:8081
     depends_on:
       - zookeeper
       - kafka

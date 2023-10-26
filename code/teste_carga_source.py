@@ -13,6 +13,11 @@ COLUMNS = {
     "data": "data DATE",
 }
 
+GRANTS_CDC = [
+    "GRANT SELECT ON {username}.{name} TO C##CDC_PRIVS",
+    "GRANT FLASHBACK ON {username}.{name} TO C##CDC_PRIVS",
+    "ALTER TABLE {username}.{name} ADD SUPPLEMENTAL LOG DATA (ALL) COLUMNS",
+]
 
 username = "C##USERSOURCE"
 password = "C##USERSOURCE"
@@ -62,10 +67,11 @@ def generate_random_string(vcount=500, min_length=50, max_length=100):
     strings = []
     for _ in range(0, vcount):
         string_length = random.randint(min_length, max_length)
-        characters = string.ascii_uppercase  
+        characters = string.ascii_uppercase
         random_string = "".join(random.choice(characters) for _ in range(string_length))
         strings.append(random_string)
     return strings
+
 
 def create_sample_tables(vcount: int, if_exists="append"):
     ddl = []
@@ -80,16 +86,19 @@ def create_sample_tables(vcount: int, if_exists="append"):
             ddl.append(
                 stmt_template.format(name=p, columns=",\n".join(COLUMNS.values()))
             )
-            
+
         with engine.connect() as conn:
             for i, stmt in enumerate(ddl):
-                if table_exist(tables[i]) and if_exists=="drop":
+                if table_exist(tables[i]) and if_exists == "drop":
                     conn.execute(text("DROP TABLE {name}".format(name=tables[i])))
-                    print(tables[i] + " excluida com sucesso")
-                
+                    
                 if not table_exist(tables[i]):
                     conn.execute(text(stmt))
                     print(tables[i] + " criada com sucesso...")
+                    
+                    for grant in GRANTS_CDC:
+                        g = grant.format(username=username, name=tables[i])
+                        conn.execute(text(g))
                 else:
                     print(tables[i] + " ja existe...")
 
@@ -107,7 +116,7 @@ def insert(vcount=1000, seconds: int = 30):
 
     strings = generate_random_string(vcount)
     dates = generate_radom_date(vcount)
-    
+
     data_insert = list(zip(strings, dates))
 
     with engine.connect() as conn:
@@ -117,4 +126,3 @@ def insert(vcount=1000, seconds: int = 30):
 
 create_sample_tables(10, if_exists="drop")
 insert(vcount=100)
-

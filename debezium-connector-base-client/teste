@@ -1,0 +1,1 @@
+ docker exec connect-client /bin/bash -c "curl -i -X POST -H  'Content-Type: application/json' http://localhost:8083/connectors -d @/kafka/connectors_template/oracle_v2.json"
