@@ -1,20 +1,25 @@
 settings:
   kafka_connect_url: http://localhost:8083
-  client_prefix: "COCALK1_"
-  path_template: ./templates/conn_postgresql_sink_avro_template.json
+  client_prefix: "cliente1."
+  path_template: ./connectors_template/conn_postgresql_sink_debezium_tmp.json
 
   datasource:
-    jdbc_url: jdbc:postgresql://192.168.0.110:5432/postgres?options=-csearch_path%3Dcocal
+    jdbc_url: jdbc:postgresql://192.168.0.226:5432/postgres
     user: postgres
     password: postgres
     tables-map:
-      - table: TB6
-        pks: A
-      - table: TB7
-        pks: A
-      - table: TB8
-        pks: A
-      - table: TB9
-        pks: A
-      - table: TB10
-        pks: A
+      - table: TB_1
+        pks:
+          - ID
+      - table: TB_2
+        pks:
+          - ID
+      - table: TB_3
+        pks: 
+          - ID
+      - table: TB_4
+        pks: 
+          - ID
+      - table: TB_5
+        pks: 
+          - ID

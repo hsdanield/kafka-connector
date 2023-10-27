@@ -15,6 +15,7 @@ services:
      - 5006:5006
     environment:
      - BOOTSTRAP_SERVERS=http://192.168.0.226:9092
+     - CONNECT_REST_ADVERTISED_HOST_NAME=connect-client
      - GROUP_ID=2
      - CONFIG_STORAGE_TOPIC=my_connect_configs2
      - OFFSET_STORAGE_TOPIC=my_connect_offsets2

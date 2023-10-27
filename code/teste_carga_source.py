@@ -91,6 +91,7 @@ def create_sample_tables(vcount: int, if_exists="append"):
             for i, stmt in enumerate(ddl):
                 if table_exist(tables[i]) and if_exists == "drop":
                     conn.execute(text("DROP TABLE {name}".format(name=tables[i])))
+                    print(tables[i] + " excluica com sucesso..." )
                     
                 if not table_exist(tables[i]):
                     conn.execute(text(stmt))
@@ -103,11 +104,11 @@ def create_sample_tables(vcount: int, if_exists="append"):
                     print(tables[i] + " ja existe...")
 
 
-def insert(vcount=1000, seconds: int = 30):
+def insert(vcount_tables, vcount=1000, seconds: int = 30):
     global tables
-
-    print(tables)
-
+    
+    tables = ["TB_" + str(t) for t in range(1, vcount_tables + 1)]
+    
     marks = ", ".join(["?" for i in range(0, len(COLUMNS.keys()))][1:])
     columns = ", ".join([i for i in COLUMNS.keys()][1:])
     params = ", ".join([":" + i for i in COLUMNS.keys()][1:])
@@ -122,7 +123,8 @@ def insert(vcount=1000, seconds: int = 30):
     with engine.connect() as conn:
         for t in tables:
             conn.execute(stmt.format(name=t), data_insert)
+            print("Insert " + str(vcount) + " rows in " + t)
 
 
-create_sample_tables(10, if_exists="drop")
-insert(vcount=100)
+create_sample_tables(10, if_exists="append")
+insert(vcount_tables=10, vcount=500)

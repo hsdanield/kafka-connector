@@ -1,0 +1,15 @@
+{
+  "connector.class": "io.debezium.connector.oracle.OracleConnector",
+  "tasks.max": "1",
+  "topic.prefix": "cliente1",
+  "database.hostname": "192.168.0.226",
+  "database.port": "1521",
+  "database.user": "C##USERCDC",
+  "database.password": "C##USERCDC",
+  "database.dbname": "ORCLCDB",
+  "table.include.list": "C##USERSOURCE.TB_1,C##USERSOURCE.TB_2,C##USERSOURCE.TB_3,C##USERSOURCE.TB_4,C##USERSOURCE.TB_5",
+  "schema.history.internal.kafka.bootstrap.servers": "http://192.168.0.226:9092",
+  "schema.history.internal.kafka.topic": "cliente1.orclcdb",
+  "snapshot.mode": "always",
+  "snapshot.include.collection.list": "C##USERSOURCE.TB_4,C##USERSOURCE.TB_5"
+}
