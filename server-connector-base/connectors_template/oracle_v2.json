@@ -1,0 +1,16 @@
+{
+    "name": "orclcdb-connector",
+    "config": {
+      "connector.class" : "io.debezium.connector.oracle.OracleConnector",
+      "tasks.max" : "1",
+      "topic.prefix" : "server1",
+      "database.hostname" : "192.168.0.226",
+      "database.port" : "1521",
+      "database.user" : "C##USERCDC",
+      "database.password" : "C##USERCDC",
+      "database.dbname" : "ORCLCDB",
+      "table.include.list": "C##USERSOURCE.TAB_TESTE_1",
+      "schema.history.internal.kafka.bootstrap.servers" : "kafka:9092",
+      "schema.history.internal.kafka.topic": "schema-changes.orclcdb"
+    }
+  }
