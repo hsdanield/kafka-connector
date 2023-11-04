@@ -1,0 +1,13 @@
+{
+    "connector.class": "io.debezium.connector.sqlserver.SqlServerConnector",
+    "tasks.max": "1",
+    "topic.prefix": "cliente2",
+    "database.hostname": "192.168.96.1",
+    "database.port": "1433",
+    "database.user": "sa",
+    "database.password": "Password!",
+    "database.names": "testDB2",
+    "schema.history.internal.kafka.bootstrap.servers": "http://192.168.96.1:9092",
+    "schema.history.internal.kafka.topic": "client2.testDB2",
+    "database.encrypt": "false"
+}

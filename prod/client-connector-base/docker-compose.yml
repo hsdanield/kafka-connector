@@ -1,0 +1,26 @@
+version: '2'
+name: client-connector-base
+services:
+
+  
+  connect-client:
+    container_name: connect-client
+    image: debezium/client-connector:${DEBEZIUM_VERSION}
+    build:
+      context: client-connector
+      args:
+        DEBEZIUM_VERSION: ${DEBEZIUM_VERSION}
+    ports:
+     - 8084:8083
+     - 5006:5006
+    environment:
+     - BOOTSTRAP_SERVERS=http://${HOST_BROKER}:9092
+     - CONNECT_REST_ADVERTISED_HOST_NAME=connect-client
+     - GROUP_ID=2
+     - CONFIG_STORAGE_TOPIC=my_connect_configs2
+     - OFFSET_STORAGE_TOPIC=my_connect_offsets2
+     - STATUS_STORAGE_TOPIC=my_connect_statuses2
+     - LD_LIBRARY_PATH=/instant_client
+     - KAFKA_DEBUG=true
+     - DEBUG_SUSPEND_FLAG=n
+     - JAVA_DEBUG_PORT=localhost:5006
