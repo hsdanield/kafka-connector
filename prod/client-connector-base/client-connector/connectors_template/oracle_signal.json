@@ -14,7 +14,7 @@
     "snapshot.delay.ms": "10000",
     "schema.history.internal.store.only.captured.tables.ddl": "false",
     "schema.history.internal.store.only.captured.databases.ddl": "false",
-    "table.include.list": "SOURCE_C1.TB_1,SOURCE_C1.TB_2,SOURCE_C1.TB_3,SOURCE_C1.TB_4,SOURCE_C1.TB_5,SOURCE_C1.TB_6",
+    "table.include.list": "SOURCE_C1.TB_1,SOURCE_C1.TB_2,SOURCE_C1.TB_3,SOURCE_C1.TB_4,SOURCE_C1.TB_5,SOURCE_C1.TB_6,SOURCE_C1.TB_7",
     "include.schema.changes": "false",
     "topic.creation.default.partitions": "1",
     "database.tablename.case.insensitive": "true",
