@@ -1,0 +1,24 @@
+{
+    "name": "<input>",
+    "config": {
+        "connector.class": "io.debezium.connector.jdbc.JdbcSinkConnector",
+        "tasks.max": "1",
+        "connection.url": "<input>",
+        "connection.username": "<input>",  
+        "connection.password": "<input>",  
+        "insert.mode": "upsert",
+        "delete.enabled": "true",
+        "primary.key.fields": "<input>",
+        "primary.key.mode": "record_key",
+        "schema.evolution": "basic", 
+        "database.time_zone": "UTC-3",
+        "topics": "<input>",
+        "table.name.format": "<input>",
+        "transforms": "unwrap",
+        "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+        "transforms.unwrap.drop.tombstones": "false",
+        "transforms.unwrap.delete.handling.mode": "rewrite",
+        "transforms.unwrap.add.fields": "op,lsn,db,schema,table,user_name,name,source.ts_ms,ts"
+    }
+}
+

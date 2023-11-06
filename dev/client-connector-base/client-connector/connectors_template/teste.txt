@@ -1,0 +1,10 @@
+docker compose -f ./server-connector-base/docker-compose.yml down && docker compose -f ./server-connector-base/docker-compose.yml up --build -d
+
+docker compose -f ./client-connector-base/docker-compose.yml down && docker compose -f ./client-connector-base/docker-compose.yml up --build -d
+
+docker exec connect-client /bin/bash -c "curl -X PUT -H 'Content-Type:application/json' http://localhost:8083/connectors/cliente1-orclcdb-conn/config -d @/kafka/connectors_template/oracle_v6.json"
+
+docker cp ./client-connector-base/client-connector/connectors_template/ connect-client:/kafka/
+
+
+docker exec connect-client /bin/bash -c "curl -X PUT http://localhost:8083/connectors/cliente1-orclcdb-conn/stop"

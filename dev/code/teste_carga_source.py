@@ -139,5 +139,5 @@ def insert(vcount_tables, vcount=1000, seconds: int = 30):
             print("Insert " + str(vcount) + " rows in " + t)
 
 
-# create_sample_tables(6, if_exists="append")
-# insert(vcount_tables=6, vcount=500)
+# create_sample_tables(10, if_exists="append")
+insert(vcount_tables=10, vcount=500)

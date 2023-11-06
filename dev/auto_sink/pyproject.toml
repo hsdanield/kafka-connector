@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "connector"
+version = "0.1.0"
+description = ""
+authors = ["dhs"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+cx-oracle = "^8.3.0"
+sqlalchemy = "^1.4.44"
+confluent-kafka = "^2.3.0"
+pyyaml = "^6.0.1"
+requests = "^2.31.0"
+black = "^23.10.1"
+pyodbc = "^5.0.1"
+pymssql = "^2.2.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
