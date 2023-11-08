@@ -58,7 +58,7 @@ services:
     environment:
       - CONNECT_REST_ADVERTISED_HOST_NAME=connect
       - BOOTSTRAP_SERVERS=kafka:9092
-      - GROUP_ID=1
+      - GROUP_ID=server-base
       - CONFIG_STORAGE_TOPIC=my_connect_configs
       - OFFSET_STORAGE_TOPIC=my_connect_offsets
       - STATUS_STORAGE_TOPIC=my_connect_statuses

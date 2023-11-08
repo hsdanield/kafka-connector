@@ -16,10 +16,10 @@ services:
     environment:
      - BOOTSTRAP_SERVERS=http://${HOST_BROKER}:9092
      - CONNECT_REST_ADVERTISED_HOST_NAME=connect-client
-     - GROUP_ID=2
-     - CONFIG_STORAGE_TOPIC=my_connect_configs2
-     - OFFSET_STORAGE_TOPIC=my_connect_offsets2
-     - STATUS_STORAGE_TOPIC=my_connect_statuses2
+     - GROUP_ID=cliente1
+     - CONFIG_STORAGE_TOPIC=my_connect_configs-cliente1
+     - OFFSET_STORAGE_TOPIC=my_connect_offsets-cliente1
+     - STATUS_STORAGE_TOPIC=my_connect_statuses-cliente1
      - LD_LIBRARY_PATH=/instant_client
      - KAFKA_DEBUG=true
      - DEBUG_SUSPEND_FLAG=n

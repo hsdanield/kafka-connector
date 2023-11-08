@@ -21,7 +21,7 @@
     "schema.include.list": "SOURCE_C1,INTCDC",
     "schema.history.internal.kafka.topic": "cliente1.orclcdb",
     "topic.creation.default.replication.factor": "1",
-    "database.history.file.filename": "history.dat",
+    "database.history.file.filename": "history_client1_orclcdb.dat",
     "topic.creation.default.compression.type": "lz4",
     "topic.creation.default.cleanup.policy": "compact",
     "database.history.kafka.bootstrap.servers": "",

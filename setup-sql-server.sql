@@ -1,7 +1,7 @@
 -- Create the test database
-CREATE DATABASE testDB;
+CREATE DATABASE testDB2;
 GO
-USE testDB;
+USE testDB2;
 EXEC sys.sp_cdc_enable_db;
 
 -- Create and populate our products using a single insert with many rows

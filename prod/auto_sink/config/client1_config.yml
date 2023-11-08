@@ -26,3 +26,6 @@ settings:
       - table: TB_6
         pks: 
           - ID
+      - table: TB_7
+        pks: 
+          - ID
